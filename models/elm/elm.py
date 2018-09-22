@@ -332,6 +332,12 @@ class GenELMClassifier(BaseELM, ClassifierMixin):
 
         return class_predictions
 
+    def score(self, X, y):
+        """Force use of accuracy score since we don't inherit
+           from ClassifierMixin"""
+
+        from sklearn.metrics import accuracy_score
+        return accuracy_score(y, self.predict(X))
 
 # ELMRegressor with default RandomLayer
 class ELMRegressor(BaseEstimator, RegressorMixin):
