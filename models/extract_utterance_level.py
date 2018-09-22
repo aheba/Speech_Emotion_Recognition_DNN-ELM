@@ -142,6 +142,7 @@ def extract_utterance_level_features(idx, path_save):
     elmr = GenELMClassifier(hidden_layer=rhl)
     elmr.fit(X_train, y_train)
     y_pred=elmr.predict(X_test)
+    test_weighted_accuracy=elmr.score(X_test, y_test)
 
     uar=0
     cnf_matrix = confusion_matrix(y_test, y_pred)
