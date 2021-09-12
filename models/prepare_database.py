@@ -60,11 +60,10 @@ def load_session(pathSession):
                 path=pathWavFolder+utterance[2][:-5]+'/'+utterance[2]+'.wav'
                 (sr,signal) = scipy.io.wavfile.read(path,mmap=False)
         
-                if(emoFile[7] != 'i'):
-                    if(utterance[2][7] =='s'):
-                        improvisedUtteranceList.append([signal,utterance[3],utterance[2][18]])
-                    else:
-                        improvisedUtteranceList.append([signal,utterance[3],utterance[2][15]])
+                if(emoFile[7] != 'i') and (utterance[2][7] =='s'):
+                    improvisedUtteranceList.append([signal,utterance[3],utterance[2][18]])
+                else:
+                    improvisedUtteranceList.append([signal,utterance[3],utterance[2][15]])
     return improvisedUtteranceList
 
 def count_emotion(session):
